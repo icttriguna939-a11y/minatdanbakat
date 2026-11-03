@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Panel Petugas — Triguna Student Interest Database</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <!-- ===================== LOGIN ===================== -->
+  <section class="login" id="loginView" hidden>
+    <div class="login-card">
+      <div class="logo big" aria-hidden="true"><span>T56</span></div>
+      <h1>Panel Petugas SPMB</h1>
+      <p>Triguna Student Interest Database · <span id="loginPeriod"></span></p>
+      <div id="googleBtn" class="google-btn"></div>
+      <p class="login-msg" id="loginMsg" role="alert"></p>
+      <p class="login-note">Masuk dengan akun Google sekolah yang sudah didaftarkan Super Admin.</p>
+      <div id="demoLogin" hidden>
+        <p class="login-note"><strong>Mode demo</strong> — pilih peran untuk mencoba:</p>
+        <div class="demo-roles">
+          <button class="btn btn-primary" data-demo-role="super_admin">Super Admin</button>
+          <button class="btn btn-secondary" data-demo-role="koordinator">Koordinator</button>
+          <button class="btn btn-outline" data-demo-role="petugas">Petugas</button>
+          <button class="btn btn-outline" data-demo-role="pimpinan">Pimpinan</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== APLIKASI ===================== -->
+  <div class="shell" id="appView" hidden>
+    <nav class="sidebar" aria-label="Menu utama">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"><span>T56</span></div>
+        <div><strong>Triguna SID</strong><span>Database Minat Siswa</span></div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Buka menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+      <div class="nav" id="nav"></div>
+      <div class="user-card">
+        <div class="avatar" id="userAvatar"></div>
+        <div class="user-text"><strong id="userName"></strong><span id="userRole"></span></div>
+        <button class="icon-btn" id="logoutBtn" aria-label="Keluar" title="Keluar">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+        </button>
+      </div>
+    </nav>
+    <main class="main" id="main" tabindex="-1"></main>
+  </div>
+
+  <div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <div class="modal-head"><h2 id="modalTitle"></h2><button class="icon-btn" data-close aria-label="Tutup">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="print-area" id="printArea"></div>
+
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/admin-demo.js"></script>
+  <script src="js/admin-core.js"></script>
+  <script src="js/admin-pages.js"></script>
+</body>
+</html>

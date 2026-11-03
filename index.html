@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#BFE6FB">
+  <meta name="description" content="Formulir minat calon siswa SMA Triguna 1956 Jakarta. Pengisian tidak mengikat untuk mendaftar.">
+  <title>Kartu Minat Calon Siswa — SMA Triguna 1956</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app" id="app">
+
+    <header class="brand">
+      <div class="logo" id="logo" aria-hidden="true"><span>T56</span></div>
+      <div class="brand-text">
+        <strong id="schoolName">SMA Triguna 1956</strong>
+        <span id="subtitle">Kartu Minat Calon Siswa</span>
+      </div>
+    </header>
+
+    <div class="demo-banner" id="demoBanner" hidden>Mode demo — data tidak dikirim ke server.</div>
+
+    <!-- ===================== FORMULIR ===================== -->
+    <form id="form" class="form" novalidate autocomplete="on">
+      <div class="progress" id="progress">
+        <div class="progress-label">
+          <span id="stepCount">Langkah 1 dari 5</span>
+          <span id="stepSection">A. Identitas</span>
+        </div>
+        <div class="bars" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <h1 id="stepTitle" tabindex="-1">Kenalan dulu, yuk!</h1>
+        <p id="stepSub">Isi identitasmu. Hanya butuh 2 menit.</p>
+      </div>
+
+      <!-- Jebakan bot: jangan diisi -->
+      <div class="hp" aria-hidden="true">
+        <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+      </div>
+
+      <!-- LANGKAH 1 — A. Identitas -->
+      <section class="step" data-step="1">
+        <div class="card">
+          <div class="field">
+            <label for="full_name">1. Nama lengkap <em>*</em></label>
+            <input id="full_name" name="full_name" type="text" maxlength="120" autocomplete="name" placeholder="Tulis nama lengkapmu">
+            <p class="error" data-error="full_name"></p>
+          </div>
+          <div class="field">
+            <label for="origin_school">2. Asal SMP <em>*</em></label>
+            <input id="origin_school" name="origin_school" type="text" maxlength="150" placeholder="Contoh: SMP Negeri 12 Jakarta">
+            <p class="hint">Tulis nama sekolah lengkap beserta kotanya.</p>
+            <p class="error" data-error="origin_school"></p>
+          </div>
+          <fieldset class="field">
+            <legend>3. Kelas saat ini <em>*</em></legend>
+            <div class="pills big" data-group="current_grade" data-kind="single" data-style="dark"></div>
+            <p class="error" data-error="current_grade"></p>
+          </fieldset>
+        </div>
+      </section>
+
+      <!-- LANGKAH 2 — B. Rencana Pendidikan -->
+      <section class="step" data-step="2" hidden>
+        <div class="card">
+          <fieldset class="field">
+            <legend>4. Rencana setelah lulus SMP <em>*</em></legend>
+            <div class="radios" data-group="education_plan" data-kind="single" data-style="radio"></div>
+            <p class="error" data-error="education_plan"></p>
+          </fieldset>
+        </div>
+        <div class="card">
+          <fieldset class="field">
+            <legend>5. Sudah punya sekolah tujuan? <em>*</em></legend>
+            <div class="pills" data-group="target_school_status" data-kind="single" data-style="dark"></div>
+            <p class="error" data-error="target_school_status"></p>
+          </fieldset>
+          <fieldset class="field">
+            <legend>6. SMA Triguna termasuk yang kamu pertimbangkan? <em>*</em></legend>
+            <div class="pills" data-group="triguna_consideration" data-kind="single" data-style="dark"></div>
+            <p class="error" data-error="triguna_consideration"></p>
+          </fieldset>
+        </div>
+      </section>
+
+      <!-- LANGKAH 3 — C. Minat & Ketertarikan -->
+      <section class="step" data-step="3" hidden>
+        <div class="card">
+          <fieldset class="field">
+            <legend>7. Seberapa tertarik kamu mengenal SMA Triguna Jakarta? <em>*</em></legend>
+            <div class="levels" data-group="interest_level" data-kind="single" data-style="level"></div>
+            <p class="error" data-error="interest_level"></p>
+          </fieldset>
+        </div>
+        <div class="card">
+          <fieldset class="field">
+            <legend>8. Apa yang kamu pertimbangkan saat memilih SMA? <em>*</em> <small>(boleh lebih dari satu)</small></legend>
+            <div class="chips" data-group="school_considerations" data-kind="multi"></div>
+            <p class="error" data-error="school_considerations"></p>
+          </fieldset>
+        </div>
+        <div class="card">
+          <fieldset class="field">
+            <legend>9. Program apa yang menarik bagimu? <em>*</em> <small>(boleh lebih dari satu)</small></legend>
+            <div class="chips" data-group="favorite_programs" data-kind="multi"></div>
+            <p class="error" data-error="favorite_programs"></p>
+          </fieldset>
+        </div>
+      </section>
+
+      <!-- LANGKAH 4 — D. Informasi -->
+      <section class="step" data-step="4" hidden>
+        <div class="card">
+          <fieldset class="field">
+            <legend>10. Informasi apa yang ingin kamu ketahui? <em>*</em> <small>(boleh lebih dari satu)</small></legend>
+            <div class="chips" data-group="needed_information" data-kind="multi"></div>
+            <p class="error" data-error="needed_information"></p>
+          </fieldset>
+        </div>
+        <div class="card">
+          <fieldset class="field">
+            <legend>11. Mau ikut kegiatan pengenalan SMA Triguna? <em>*</em></legend>
+            <div class="pills" data-group="introduction_interest" data-kind="single" data-style="dark"></div>
+            <p class="error" data-error="introduction_interest"></p>
+          </fieldset>
+        </div>
+      </section>
+
+      <!-- LANGKAH 5 — E. Kontak & Persetujuan -->
+      <section class="step" data-step="5" hidden>
+        <div class="card">
+          <div class="field">
+            <label for="parent_name">12. Nama orang tua/wali <small>(opsional)</small></label>
+            <input id="parent_name" name="parent_name" type="text" maxlength="120" placeholder="Nama orang tua/wali">
+          </div>
+          <div class="field">
+            <label for="parent_whatsapp">13. WhatsApp orang tua/wali <small>(opsional)</small></label>
+            <input id="parent_whatsapp" name="parent_whatsapp" type="tel" inputmode="tel" maxlength="18" placeholder="08xx-xxxx-xxxx">
+            <p class="error" data-error="parent_whatsapp"></p>
+          </div>
+        </div>
+        <div class="card">
+          <fieldset class="field">
+            <legend>14. Bersedia menerima informasi kegiatan dan SPMB? <em>*</em></legend>
+            <div class="pills" data-group="consent" data-kind="single" data-style="dark"></div>
+            <p class="error" data-error="consent"></p>
+          </fieldset>
+          <div class="note">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+            <span>Nomor WhatsApp hanya dipakai bila kamu memilih “Ya”. Mengisi formulir ini tidak mengikatmu untuk mendaftar.</span>
+          </div>
+        </div>
+        <div class="alert" id="sendError" role="alert" hidden></div>
+      </section>
+
+      <footer class="actions">
+        <button type="button" class="btn btn-outline" id="btnBack" hidden>Kembali</button>
+        <button type="submit" class="btn btn-primary" id="btnNext">Lanjut</button>
+      </footer>
+    </form>
+
+    <!-- ===================== TERIMA KASIH ===================== -->
+    <section class="thanks" id="thanks" hidden>
+      <span class="sticker pink">Open House</span>
+      <span class="sticker blue">Sampai jumpa!</span>
+      <div class="badge-ok" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+      </div>
+      <h1 id="thanksTitle" tabindex="-1">Terima kasih!</h1>
+      <p>Jawabanmu sudah kami terima. Tim SPMB SMA Triguna 1956 akan berbagi info kegiatan sesuai persetujuanmu.</p>
+      <div class="card social" id="social" hidden>
+        <strong>Ikuti kami</strong>
+        <span id="igLine" hidden></span>
+        <a id="webLine" hidden target="_blank" rel="noopener"></a>
+      </div>
+      <button type="button" class="btn btn-primary wide" id="btnAgain">Isi untuk teman lain</button>
+    </section>
+
+    <!-- ===================== FORMULIR DITUTUP ===================== -->
+    <section class="thanks" id="closed" hidden>
+      <h1>Pendataan ditutup</h1>
+      <p id="closedMsg"></p>
+    </section>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
