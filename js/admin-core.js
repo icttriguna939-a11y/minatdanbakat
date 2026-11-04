@@ -47,6 +47,12 @@
     'Diundang Open House': 'purple', 'Hadir Open House': 'green', 'Mendaftar': 'green', 'Tanpa izin kontak': '', 'Tidak ada promosi': ''
   };
   const chip = (text, color) => '<span class="chip ' + (color == null ? (STATUS_COLOR[text] || '') : color) + '">' + esc(text) + '</span>';
+  /** Logo sekolah: gambar dari LOGO_URL (js/config.js), atau lingkaran "T56" bila kosong. */
+  const logoHtml = () => cfg.LOGO_URL ? '<img src="' + esc(cfg.LOGO_URL) + '" alt="Logo ' + esc(cfg.SCHOOL_NAME || 'sekolah') + '" onerror="this.parentNode.classList.remove(\'has-img\');this.outerHTML=\'<span>T56</span>\'">' : '<span>T56</span>';
+  function applyLogos(root) {
+    if (!cfg.LOGO_URL) return;
+    $$('.logo', root).forEach((el) => { if (!el.querySelector('img')) el.innerHTML = logoHtml(); if (el.querySelector('img')) el.classList.add('has-img'); });
+  }
   const initials = (name) => String(name || '?').split(/\s+/).map((w) => w[0]).slice(0, 2).join('').toUpperCase();
 
   function toast(msg, err) {
@@ -95,6 +101,7 @@
     if (!st) { st = document.createElement('style'); st.id = 'pageStyle'; document.head.appendChild(st); }
     st.textContent = '@media print { @page { size: ' + (size || 'A4 portrait') + '; margin: ' + (size && size.indexOf('A5') === 0 ? '0' : '12mm') + '; } }';
     if (html != null) $('#printArea').innerHTML = html;
+    applyLogos($('#printArea'));
     setTimeout(() => window.print(), 350);
   }
 
@@ -210,7 +217,7 @@
     const page = window.PAGES[id];
     main.innerHTML = skeleton();
     window.scrollTo(0, 0);
-    try { await page(main, state.user); }
+    try { await page(main, state.user); applyLogos(main); }
     catch (e) { console.error(e); main.innerHTML = '<div class="alert err">Halaman gagal dimuat: ' + esc(e.message) + '</div>'; }
     main.focus({ preventScroll: true });
   }
@@ -242,6 +249,8 @@
 
   // ---------- Init ----------
   document.addEventListener('DOMContentLoaded', () => {
+    applyLogos(document);
+    if (cfg.LOGO_URL) { const ic = document.createElement('link'); ic.rel = 'icon'; ic.href = cfg.LOGO_URL; document.head.appendChild(ic); }
     $$('[data-demo-role]').forEach((b) => b.addEventListener('click', () => demoLogin(b.dataset.demoRole)));
     $('#logoutBtn').addEventListener('click', () => logout(false));
     $('#menuToggle').addEventListener('click', () => {
@@ -255,6 +264,6 @@
     if (loadSession()) enterApp(); else startLogin();
   });
 
-  window.ADMIN = { state, api, apiOrToast, esc, num, svg, cat, chip, toast, openModal, closeModal, busy, chart, printHtml,
+  window.ADMIN = { state, logoHtml, applyLogos, api, apiOrToast, esc, num, svg, cat, chip, toast, openModal, closeModal, busy, chart, printHtml,
                    initials, ROLE_LABEL, STATUS_COLOR, isDemo, refreshBadges, route, $, $$ };
 })();

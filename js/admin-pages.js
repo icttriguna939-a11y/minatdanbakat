@@ -575,7 +575,7 @@
       (r.success && !r.data.formUrl ? alertBox('Alamat formulir belum diisi di Pengaturan (FORM_URL). Sementara memakai alamat halaman ini: <b>' + esc(formUrl) + '</b>', 'warn') : '') +
       '<div class="filterbar"><label for="copies" class="small" style="font-weight:700">Jumlah kartu dicetak</label><input class="input" id="copies" type="number" min="1" max="200" value="30" style="width:100px">' +
       '<span class="small muted grow">Kartu untuk siswa yang tidak membawa HP. Isian tangan dimasukkan petugas lewat Data Siswa → Input dari kartu cetak.</span></div>' +
-      '<div class="print-preview"><div id="cardPrev">' + a5Card() + '</div><div class="qr-poster" id="poster"><div class="logo big"><span>T56</span></div><h3>Kenalan dengan SMA Triguna 1956</h3>' +
+      '<div class="print-preview"><div id="cardPrev">' + a5Card() + '</div><div class="qr-poster" id="poster"><div class="logo big">' + A.logoHtml() + '</div><h3>Kenalan dengan SMA Triguna 1956</h3>' +
       '<p class="muted small" style="margin:0">Scan untuk mengisi Kartu Minat · 2 menit · tidak mengikat</p><div class="qr-box" id="qrBig"></div><p class="small" style="word-break:break-all;margin:0">' + esc(formUrl) + '</p></div></div>';
     makeQr($('#qrBig'), formUrl, 440);
     makeQr($('#cardPrev .a5-qr'), formUrl, 160);
@@ -593,7 +593,7 @@
     };
     $('#prPoster').onclick = () => {
       const src = ($('#qrBig canvas') && $('#qrBig canvas').toDataURL()) || ($('#qrBig img') && $('#qrBig img').src);
-      printHtml('<div style="text-align:center;padding:30mm 15mm;font-family:Poppins,sans-serif;color:#12213D"><h1 style="font-family:\'Baloo 2\',sans-serif;font-size:40pt;line-height:1;margin:0">Kenalan dengan<br>SMA Triguna 1956</h1>' +
+      printHtml('<div style="text-align:center;padding:24mm 15mm;font-family:Poppins,sans-serif;color:#12213D">' + (window.APP_CONFIG.LOGO_URL ? '<img src="' + esc(window.APP_CONFIG.LOGO_URL) + '" alt="" style="height:32mm;margin-bottom:6mm">' : '') + '<h1 style="font-family:\'Baloo 2\',sans-serif;font-size:40pt;line-height:1;margin:0">Kenalan dengan<br>SMA Triguna 1956</h1>' +
         '<p style="font-size:16pt;margin:8mm 0">Scan untuk mengisi Kartu Minat — 2 menit, tidak mengikat</p><img src="' + src + '" style="width:110mm;height:110mm"><p style="font-size:11pt;margin-top:8mm">' + esc(formUrl) + '</p></div>', 'A4 portrait');
     };
   }
@@ -607,7 +607,7 @@
 
   function a5Card() {
     const q = (title, opts, multi) => '<div class="q' + (multi ? ' multi' : '') + '"><b>' + title + '</b>' + opts.map((o) => '<span>' + esc(typeof o === 'string' ? o : o.value) + '</span>').join('') + '</div>';
-    return '<div class="a5"><div class="a5-head"><div class="logo"><span>T56</span></div><div><h3>KARTU MINAT CALON SISWA</h3><p>SMA Triguna 1956 Jakarta · tidak mengikat untuk mendaftar</p></div><div class="a5-qr"></div></div>' +
+    return '<div class="a5"><div class="a5-head"><div class="logo">' + A.logoHtml() + '</div><div><h3>KARTU MINAT CALON SISWA</h3><p>SMA Triguna 1956 Jakarta · tidak mengikat untuk mendaftar</p></div><div class="a5-qr"></div></div>' +
       '<div class="a5-id"><div class="line">1. Nama lengkap <i></i></div><div class="line">2. Asal SMP <i></i> 3. Kelas&nbsp; ○ VII&nbsp; ○ VIII&nbsp; ○ IX</div></div>' +
       '<div class="a5-cols"><div><span class="sec">B. RENCANA PENDIDIKAN</span>' + q('4. Rencana setelah lulus SMP', O.education_plan) + q('5. Sudah punya sekolah tujuan?', O.target_school_status) +
       q('6. SMA Triguna termasuk yang dipertimbangkan?', O.triguna_consideration) + '<span class="sec">C. MINAT & KETERTARIKAN</span>' + q('7. Seberapa tertarik mengenal SMA Triguna?', O.interest_level) +

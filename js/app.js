@@ -297,10 +297,14 @@
     if (cfg.LOGO_URL) {
       const img = new Image();
       img.alt = '';
+      img.onerror = () => { const l = $('#logo'); l.classList.remove('has-img'); l.innerHTML = '<span>T56</span>'; };
       img.src = cfg.LOGO_URL;
       const logo = $('#logo');
+      img.alt = 'Logo ' + cfg.SCHOOL_NAME;
       logo.innerHTML = '';
       logo.appendChild(img);
+      logo.classList.add('has-img');
+      const ic = document.createElement('link'); ic.rel = 'icon'; ic.href = cfg.LOGO_URL; document.head.appendChild(ic);
     }
     let social = false;
     if (cfg.INSTAGRAM) { const ig = $('#igLine'); ig.textContent = 'Instagram · ' + cfg.INSTAGRAM; ig.hidden = false; social = true; }

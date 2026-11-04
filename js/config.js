@@ -9,14 +9,14 @@ window.APP_CONFIG = {
 
   // 1b. Panel petugas (admin.html): OAuth Client ID dari Google Cloud Console.
   //     Boleh dikosongkan bila sudah diisi di sheet SETTINGS (GOOGLE_CLIENT_ID).
-  GOOGLE_CLIENT_ID: '',
+  GOOGLE_CLIENT_ID: '79891289909-524h32mi08b5n2n3120fan6hhm9prlan.apps.googleusercontent.com',
 
   // 2. Identitas sekolah
   SCHOOL_NAME: 'SMA Triguna 1956',
   SUBTITLE: 'Kartu Minat Calon Siswa',
-  LOGO_URL: '',            // contoh: 'img/logo.png' (kosong = lingkaran "T56")
-  INSTAGRAM: '',           // contoh: '@smatriguna1956'
-  WEBSITE: '',             // contoh: 'https://smatriguna1956.sch.id'
+  LOGO_URL: 'img/logo triguna transparan.png',            // contoh: 'img/logo.png' (kosong = lingkaran "T56")
+  INSTAGRAM: 'https://www.instagram.com/sma_triguna1956/',           // contoh: '@smatriguna1956'
+  WEBSITE: 'https://smtriguna.id/',             // contoh: 'https://smatriguna1956.sch.id'
 
   // 3. Pilihan jawaban.
   //    Nomor 4–7, 11, dan 14 JANGAN diubah tanpa mengubah Kode.gs (bagian VALID).
